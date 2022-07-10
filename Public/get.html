@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch</title>
+    <link rel="icon" type="image/x-icon" href="./Assets/file.png" />
+  </head>
+  <body>
+    <h1>Fetch your file here...</h1>
+    <hr />
+    <p>
+      <a href="/index.html">Upload</a> ||
+      <a href="/get.html">Fetch</a>
+    </p>
+    <hr />
+    Enter unique id :
+    <input type="text" id="user-id" />
+    <input type="button" value="Fetch" id="fetch-files" />
+    <ol id="list-items"></ol>
+  </body>
+  <script>
+    const uid = document.querySelector("#user-id");
+    const _btn_handler = document.querySelector("#fetch-files");
+    const _items = document.querySelector("#list-items");
+    const resp = "";
+    _btn_handler.addEventListener("click", () => {
+      let data = { uid: uid.value };
+      fetch("/id_fetch", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => (_items.innerHTML = data.inHTML));
+    });
+  </script>
+</html>
