@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "500mb" }));
 app.use(express.static("../Public"));
-const PORT = 5100 || process.env.port;
+const PORT = process.env.PORT || 5100;
 
 app.post("/upload", (req, res) => {
   const file_base_64 = req.body.base64.split(",")[1];
