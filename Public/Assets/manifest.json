@@ -1,0 +1,16 @@
+{
+  "name": "Drop Files",
+  "short_name": "Drop Files",
+  "description": "Upload documents, images and files for free. No registration required. Fast and instant downloading! Safe and Secure. Unlimited Upload/Download speed.",
+  "start_url": "../index.html",
+  "background_color": "#5baefc",
+  "theme_color": "#5c5ef7",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}
