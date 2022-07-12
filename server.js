@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "500mb" }));
 app.use(express.static("./Public"));
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5000;
 
 app.post("/upload", (req, res) => {
   const file_base_64 = req.body.base64.split(",")[1];
@@ -28,7 +28,10 @@ app.post("/upload", (req, res) => {
       console.log(err);
     }
   );
-  res.send({ ststus: "Success.." });
+  res.send({
+    status: "uploaded",
+    link: `/get?uid=${file_uid}&name=${file_name}`,
+  });
 });
 
 app.post("/id_fetch", (req, res) => {

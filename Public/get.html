@@ -19,6 +19,23 @@
       property="twitter:image"
       content="http://drop-files.herokuapp.com/get?uid=Assets&name=icon.png"
     />
+    <style>
+      .progress {
+        margin-top: 10px;
+        outline: none;
+        width: 85px;
+        height: 35px;
+        cursor: pointer;
+        border-radius: 5px;
+        border-style: none;
+        background-color: rgb(0, 0, 0);
+        font-size: 14px;
+        font-weight: 600;
+        font-family: sans-serif;
+        color: white;
+        letter-spacing: 1px;
+      }
+    </style>
   </head>
   <body>
     <h1>Fetch your file here...</h1>
@@ -29,8 +46,8 @@
     </p>
     <hr />
     Enter unique id :
-    <input type="text" id="user-id" />
-    <input type="button" value="Fetch" id="fetch-files" />
+    <input type="text" id="user-id" /><br />
+    <input type="button" value="Fetch" id="fetch-files" class="progress" />
     <ol id="list-items"></ol>
   </body>
   <script>

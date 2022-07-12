@@ -20,6 +20,7 @@
       content="http://drop-files.herokuapp.com/get?uid=Assets&name=icon.png"
     />
     <link rel="manifest" href="./Assets/manifest.json" />
+    <link rel="stylesheet" href="./index_style.css" />
   </head>
   <body>
     <h1>Drop your file here...</h1>
@@ -32,50 +33,15 @@
     <p>❗unique id is used to fetch your files . .</p>
     Enter unique id :
     <input type="text" id="user-id" />
-    <input type="file" name="file" id="inp-file" />
-    <input type="button" value="Upload" id="file-upload" />
+    <label for="file" class="file-input">
+      <div class="drop-zone">
+        <p><b> Select a file </b> or drop it here!</p>
+      </div>
+      <input type="file" name="file" id="inp-file" />
+    </label>
     <p id="file_progress"></p>
+    <input type="button" class="progress" value="Upload" id="file-upload" />
+    <div id="promt"><div id="link"></div></div>
   </body>
-  <script>
-    const upload_file = (name, base64, uid) => {
-      let data = { name, base64, uid };
-      fetch("/upload", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((resp) => resp.json())
-        .then((data) => console.log(data));
-    };
-
-    const readFile = (file) => {
-      const uid = document.querySelector("#user-id");
-      const reader = new FileReader();
-      reader.addEventListener("load", (event) => {
-        const result = event.target.result;
-        upload_file(file.name, result, uid.value);
-      });
-
-      reader.addEventListener("progress", (event) => {
-        if (event.loaded && event.total) {
-          const percent = (event.loaded / event.total) * 100;
-          const progress = document.querySelector("#file_progress");
-          progress.innerHTML = `Progress: ${Math.round(percent)}`;
-        }
-      });
-      reader.readAsDataURL(file);
-    };
-
-    const _file_change = () => {
-      const _file = document.querySelector("#inp-file");
-      const fileList = _file.files;
-      console.log(fileList[0]);
-      readFile(fileList[0]);
-    };
-
-    const _btn_upload = document.querySelector("#file-upload");
-    _btn_upload.addEventListener("click", () => _file_change());
-  </script>
+  <script src="./index_script.js"></script>
 </html>
