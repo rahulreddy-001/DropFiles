@@ -3,7 +3,7 @@ const cors = require("cors");
 const fs = require("fs");
 const mongodb = require("mongodb");
 const mongodb_url =
-  "mongodb+srv://rahul_001:rahul_001@mainappfiledb.0n0t7d5.mongodb.net/?retryWrites=true&w=majority";
+  "#";
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "500mb" }));
